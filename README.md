@@ -246,10 +246,107 @@ s
 - `Instruction Decoder` - интерпретатор машинных инструкций
 
 Сигналы:
--    `MicroProgramCounterZero` - сбросить счетчик микропрограммы в ноль.
--    `MicroProgramCounterOpcode` - установить счетчик микропрограммы на значение кода операции.
--    `MicroProgramCounterNext` -  перейти к следующему состоянию микропрограммы.
--    `LatchPC` - защелкнуть текущее значение программного счетчика (PC).
--    `LatchMPCounter` - защелкнуть текущее значение счетчика микропрограммы (MPC).
+-    `MicroProgramCounterZero` - сбросить счетчик микропрограммы в ноль
+-    `MicroProgramCounterOpcode` - установить счетчик микропрограммы на значение кода операции
+-    `MicroProgramCounterNext` -  перейти к следующему состоянию микропрограммы
+-    `LatchPC` - защелкнуть текущее значение программного счетчика (PC)
+-    `LatchMPCounter` - защелкнуть текущее значение счетчика микропрограммы (MPC)
 
-## Тестирование
+# Тестирование проекта
+
+Тестирование осуществляется при помощи golden test-ов.
+Настройки golden тестирования находятся в файле `tests/test_machine.py`.
+Конфигурация golden test-ов лежит в директории `golden`.
+
+## Тестовое покрытие
+
+- `cat` – повторяет поток ввода на вывод;
+- `hello user` – печатает на выход приветствие пользователя;
+- `hello world` – печатает на выход “Hello, world!”;
+- `prob1` – сумма чисел от 1 до 1000, кратные 3 либо 5.
+
+## Запустить тесты
+
+```sh
+pytest tests/test_machine.py
+
+## CI
+CI описывается в файла python.yaml:
+```yaml
+name: Python CI/CD
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.11
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install poetry
+          poetry install
+
+      - name: Run tests and collect coverage
+        run: |
+          poetry run coverage run -m pytest .
+          poetry run coverage report -m
+        env:
+          CI: true
+
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.11
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install poetry
+          poetry install
+
+      - name: Check code formatting with Ruff
+        run: echo Ok
+
+      - name: Run Ruff linters
+        run: poetry run ruff check .
+
+
+## Пример тестирования
+```sh
+$ pytest tests/test_machine.py 
+=================================================================================== test session starts ====================================================================================
+platform linux -- Python 3.12.3, pytest-8.2.1, pluggy-1.5.0
+rootdir: /home/Daniil/Desktop/BIZHAN/csa-lab-puk
+configfile: pyproject.toml
+plugins: regressions-2.5.0, datadir-1.5.0, golden-0.2.2, typeguard-4.2.1, anyio-4.3.0
+collected 4 items                                                                                                                                                                          
+
+tests/test_machine.py ....                                                                                                                                                           [100%]
+
+==================================================================================== 4 passed in 0.54s =====================================================================================
+
+```
+

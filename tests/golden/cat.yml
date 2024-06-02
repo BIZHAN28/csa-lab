@@ -1,0 +1,443 @@
+source_code: |
+  section .code
+  .start:
+      movi x1, 0
+  .loop:
+      in x0, x1
+      je x0, .exit
+      out x1, x0
+      jmp .loop
+  .exit:
+      hlt
+stdin: |
+  Testing cat
+stdout: |
+  PMIO on 0 : 'Testing cat'
+out_code_readable: |
+  {
+      "data_mem": {},
+      "start": 0,
+      "code_mem": {
+          "0": {
+              "opcode": "movi",
+              "args": [
+                  "x1",
+                  "0"
+              ]
+          },
+          "1": {
+              "opcode": "in",
+              "args": [
+                  "x0",
+                  "x1"
+              ]
+          },
+          "2": {
+              "opcode": "je",
+              "args": [
+                  "x0",
+                  "5"
+              ]
+          },
+          "3": {
+              "opcode": "out",
+              "args": [
+                  "x1",
+                  "x0"
+              ]
+          },
+          "4": {
+              "opcode": "jmp",
+              "args": [
+                  "1"
+              ]
+          },
+          "5": {
+              "opcode": "hlt",
+              "args": []
+          }
+      }
+  }
+out_log: |
+  DEBUG   vm:computer      TICK 0 PREV_MPC: 0 CUR_MPC: 0 
+   REGS: [(X0 = 0)(X1 = 0)(X2 = 0)(X3 = 0)(X4 = 0)(X5 = 0)(X6 = 0)(X7 = 0)(X8 = 0)(X9 = 0)(X10 = 0)(X11 = 0)(X12 = 0)(X13 = 0)(X14 = 0)(X15 = 0)] 
+   MOVI ['x1', '0']
+  DEBUG   vm:simulation    NEW INSTRUCTION
+  DEBUG   vm:simulation    ------------------
+  DEBUG   vm:simulation    TICK 1 PREV_MPC: 0 CUR_MPC: 5 
+   REGS: [(X0 = 0)(X1 = 0)(X2 = 0)(X3 = 0)(X4 = 0)(X5 = 0)(X6 = 0)(X7 = 0)(X8 = 0)(X9 = 0)(X10 = 0)(X11 = 0)(X12 = 0)(X13 = 0)(X14 = 0)(X15 = 0)] 
+   MOVI ['x1', '0']
+  DEBUG   vm:simulation    TICK 2 PREV_MPC: 5 CUR_MPC: 0 
+   REGS: [(X0 = 0)(X1 = 0)(X2 = 0)(X3 = 0)(X4 = 0)(X5 = 0)(X6 = 0)(X7 = 0)(X8 = 0)(X9 = 0)(X10 = 0)(X11 = 0)(X12 = 0)(X13 = 0)(X14 = 0)(X15 = 0)] 
+   IN ['x0', 'x1']
+  DEBUG   vm:simulation    NEW INSTRUCTION
+  DEBUG   vm:simulation    ------------------
+  DEBUG   vm:simulation    TICK 3 PREV_MPC: 0 CUR_MPC: 2 
+   REGS: [(X0 = 0)(X1 = 0)(X2 = 0)(X3 = 0)(X4 = 0)(X5 = 0)(X6 = 0)(X7 = 0)(X8 = 0)(X9 = 0)(X10 = 0)(X11 = 0)(X12 = 0)(X13 = 0)(X14 = 0)(X15 = 0)] 
+   IN ['x0', 'x1']
+  DEBUG   vm:simulation    TICK 4 PREV_MPC: 2 CUR_MPC: 0 
+   REGS: [(X0 = 84)(X1 = 0)(X2 = 0)(X3 = 0)(X4 = 0)(X5 = 0)(X6 = 0)(X7 = 0)(X8 = 0)(X9 = 0)(X10 = 0)(X11 = 0)(X12 = 0)(X13 = 0)(X14 = 0)(X15 = 0)] 
+   JE ['x0', '5']
+  DEBUG   vm:simulation    NEW INSTRUCTION
+  DEBUG   vm:simulation    ------------------
+  DEBUG   vm:simulation    TICK 5 PREV_MPC: 0 CUR_MPC: 19 
+   REGS: [(X0 = 84)(X1 = 0)(X2 = 0)(X3 = 0)(X4 = 0)(X5 = 0)(X6 = 0)(X7 = 0)(X8 = 0)(X9 = 0)(X10 = 0)(X11 = 0)(X12 = 0)(X13 = 0)(X14 = 0)(X15 = 0)] 
+   JE ['x0', '5']
+  DEBUG   vm:simulation    TICK 6 PREV_MPC: 19 CUR_MPC: 0 
+   REGS: [(X0 = 84)(X1 = 0)(X2 = 0)(X3 = 0)(X4 = 0)(X5 = 0)(X6 = 0)(X7 = 0)(X8 = 0)(X9 = 0)(X10 = 0)(X11 = 0)(X12 = 0)(X13 = 0)(X14 = 0)(X15 = 0)] 
+   OUT ['x1', 'x0']
+  DEBUG   vm:simulation    NEW INSTRUCTION
+  DEBUG   vm:simulation    ------------------
+  DEBUG   vm:simulation    TICK 7 PREV_MPC: 0 CUR_MPC: 3 
+   REGS: [(X0 = 84)(X1 = 0)(X2 = 0)(X3 = 0)(X4 = 0)(X5 = 0)(X6 = 0)(X7 = 0)(X8 = 0)(X9 = 0)(X10 = 0)(X11 = 0)(X12 = 0)(X13 = 0)(X14 = 0)(X15 = 0)] 
+   OUT ['x1', 'x0']
+  DEBUG   vm:simulation    TICK 8 PREV_MPC: 3 CUR_MPC: 0 
+   REGS: [(X0 = 84)(X1 = 0)(X2 = 0)(X3 = 0)(X4 = 0)(X5 = 0)(X6 = 0)(X7 = 0)(X8 = 0)(X9 = 0)(X10 = 0)(X11 = 0)(X12 = 0)(X13 = 0)(X14 = 0)(X15 = 0)] 
+   JUMP ['1']
+  DEBUG   vm:simulation    NEW INSTRUCTION
+  DEBUG   vm:simulation    ------------------
+  DEBUG   vm:simulation    TICK 9 PREV_MPC: 0 CUR_MPC: 20 
+   REGS: [(X0 = 84)(X1 = 0)(X2 = 0)(X3 = 0)(X4 = 0)(X5 = 0)(X6 = 0)(X7 = 0)(X8 = 0)(X9 = 0)(X10 = 0)(X11 = 0)(X12 = 0)(X13 = 0)(X14 = 0)(X15 = 0)] 
+   JUMP ['1']
+  DEBUG   vm:simulation    TICK 10 PREV_MPC: 20 CUR_MPC: 0 
+   REGS: [(X0 = 84)(X1 = 0)(X2 = 0)(X3 = 0)(X4 = 0)(X5 = 0)(X6 = 0)(X7 = 0)(X8 = 0)(X9 = 0)(X10 = 0)(X11 = 0)(X12 = 0)(X13 = 0)(X14 = 0)(X15 = 0)] 
+   IN ['x0', 'x1']
+  DEBUG   vm:simulation    NEW INSTRUCTION
+  DEBUG   vm:simulation    ------------------
+  DEBUG   vm:simulation    TICK 11 PREV_MPC: 0 CUR_MPC: 2 
+   REGS: [(X0 = 84)(X1 = 0)(X2 = 0)(X3 = 0)(X4 = 0)(X5 = 0)(X6 = 0)(X7 = 0)(X8 = 0)(X9 = 0)(X10 = 0)(X11 = 0)(X12 = 0)(X13 = 0)(X14 = 0)(X15 = 0)] 
+   IN ['x0', 'x1']
+  DEBUG   vm:simulation    TICK 12 PREV_MPC: 2 CUR_MPC: 0 
+   REGS: [(X0 = 101)(X1 = 0)(X2 = 0)(X3 = 0)(X4 = 0)(X5 = 0)(X6 = 0)(X7 = 0)(X8 = 0)(X9 = 0)(X10 = 0)(X11 = 0)(X12 = 0)(X13 = 0)(X14 = 0)(X15 = 0)] 
+   JE ['x0', '5']
+  DEBUG   vm:simulation    NEW INSTRUCTION
+  DEBUG   vm:simulation    ------------------
+  DEBUG   vm:simulation    TICK 13 PREV_MPC: 0 CUR_MPC: 19 
+   REGS: [(X0 = 101)(X1 = 0)(X2 = 0)(X3 = 0)(X4 = 0)(X5 = 0)(X6 = 0)(X7 = 0)(X8 = 0)(X9 = 0)(X10 = 0)(X11 = 0)(X12 = 0)(X13 = 0)(X14 = 0)(X15 = 0)] 
+   JE ['x0', '5']
+  DEBUG   vm:simulation    TICK 14 PREV_MPC: 19 CUR_MPC: 0 
+   REGS: [(X0 = 101)(X1 = 0)(X2 = 0)(X3 = 0)(X4 = 0)(X5 = 0)(X6 = 0)(X7 = 0)(X8 = 0)(X9 = 0)(X10 = 0)(X11 = 0)(X12 = 0)(X13 = 0)(X14 = 0)(X15 = 0)] 
+   OUT ['x1', 'x0']
+  DEBUG   vm:simulation    NEW INSTRUCTION
+  DEBUG   vm:simulation    ------------------
+  DEBUG   vm:simulation    TICK 15 PREV_MPC: 0 CUR_MPC: 3 
+   REGS: [(X0 = 101)(X1 = 0)(X2 = 0)(X3 = 0)(X4 = 0)(X5 = 0)(X6 = 0)(X7 = 0)(X8 = 0)(X9 = 0)(X10 = 0)(X11 = 0)(X12 = 0)(X13 = 0)(X14 = 0)(X15 = 0)] 
+   OUT ['x1', 'x0']
+  DEBUG   vm:simulation    TICK 16 PREV_MPC: 3 CUR_MPC: 0 
+   REGS: [(X0 = 101)(X1 = 0)(X2 = 0)(X3 = 0)(X4 = 0)(X5 = 0)(X6 = 0)(X7 = 0)(X8 = 0)(X9 = 0)(X10 = 0)(X11 = 0)(X12 = 0)(X13 = 0)(X14 = 0)(X15 = 0)] 
+   JUMP ['1']
+  DEBUG   vm:simulation    NEW INSTRUCTION
+  DEBUG   vm:simulation    ------------------
+  DEBUG   vm:simulation    TICK 17 PREV_MPC: 0 CUR_MPC: 20 
+   REGS: [(X0 = 101)(X1 = 0)(X2 = 0)(X3 = 0)(X4 = 0)(X5 = 0)(X6 = 0)(X7 = 0)(X8 = 0)(X9 = 0)(X10 = 0)(X11 = 0)(X12 = 0)(X13 = 0)(X14 = 0)(X15 = 0)] 
+   JUMP ['1']
+  DEBUG   vm:simulation    TICK 18 PREV_MPC: 20 CUR_MPC: 0 
+   REGS: [(X0 = 101)(X1 = 0)(X2 = 0)(X3 = 0)(X4 = 0)(X5 = 0)(X6 = 0)(X7 = 0)(X8 = 0)(X9 = 0)(X10 = 0)(X11 = 0)(X12 = 0)(X13 = 0)(X14 = 0)(X15 = 0)] 
+   IN ['x0', 'x1']
+  DEBUG   vm:simulation    NEW INSTRUCTION
+  DEBUG   vm:simulation    ------------------
+  DEBUG   vm:simulation    TICK 19 PREV_MPC: 0 CUR_MPC: 2 
+   REGS: [(X0 = 101)(X1 = 0)(X2 = 0)(X3 = 0)(X4 = 0)(X5 = 0)(X6 = 0)(X7 = 0)(X8 = 0)(X9 = 0)(X10 = 0)(X11 = 0)(X12 = 0)(X13 = 0)(X14 = 0)(X15 = 0)] 
+   IN ['x0', 'x1']
+  DEBUG   vm:simulation    TICK 20 PREV_MPC: 2 CUR_MPC: 0 
+   REGS: [(X0 = 115)(X1 = 0)(X2 = 0)(X3 = 0)(X4 = 0)(X5 = 0)(X6 = 0)(X7 = 0)(X8 = 0)(X9 = 0)(X10 = 0)(X11 = 0)(X12 = 0)(X13 = 0)(X14 = 0)(X15 = 0)] 
+   JE ['x0', '5']
+  DEBUG   vm:simulation    NEW INSTRUCTION
+  DEBUG   vm:simulation    ------------------
+  DEBUG   vm:simulation    TICK 21 PREV_MPC: 0 CUR_MPC: 19 
+   REGS: [(X0 = 115)(X1 = 0)(X2 = 0)(X3 = 0)(X4 = 0)(X5 = 0)(X6 = 0)(X7 = 0)(X8 = 0)(X9 = 0)(X10 = 0)(X11 = 0)(X12 = 0)(X13 = 0)(X14 = 0)(X15 = 0)] 
+   JE ['x0', '5']
+  DEBUG   vm:simulation    TICK 22 PREV_MPC: 19 CUR_MPC: 0 
+   REGS: [(X0 = 115)(X1 = 0)(X2 = 0)(X3 = 0)(X4 = 0)(X5 = 0)(X6 = 0)(X7 = 0)(X8 = 0)(X9 = 0)(X10 = 0)(X11 = 0)(X12 = 0)(X13 = 0)(X14 = 0)(X15 = 0)] 
+   OUT ['x1', 'x0']
+  DEBUG   vm:simulation    NEW INSTRUCTION
+  DEBUG   vm:simulation    ------------------
+  DEBUG   vm:simulation    TICK 23 PREV_MPC: 0 CUR_MPC: 3 
+   REGS: [(X0 = 115)(X1 = 0)(X2 = 0)(X3 = 0)(X4 = 0)(X5 = 0)(X6 = 0)(X7 = 0)(X8 = 0)(X9 = 0)(X10 = 0)(X11 = 0)(X12 = 0)(X13 = 0)(X14 = 0)(X15 = 0)] 
+   OUT ['x1', 'x0']
+  DEBUG   vm:simulation    TICK 24 PREV_MPC: 3 CUR_MPC: 0 
+   REGS: [(X0 = 115)(X1 = 0)(X2 = 0)(X3 = 0)(X4 = 0)(X5 = 0)(X6 = 0)(X7 = 0)(X8 = 0)(X9 = 0)(X10 = 0)(X11 = 0)(X12 = 0)(X13 = 0)(X14 = 0)(X15 = 0)] 
+   JUMP ['1']
+  DEBUG   vm:simulation    NEW INSTRUCTION
+  DEBUG   vm:simulation    ------------------
+  DEBUG   vm:simulation    TICK 25 PREV_MPC: 0 CUR_MPC: 20 
+   REGS: [(X0 = 115)(X1 = 0)(X2 = 0)(X3 = 0)(X4 = 0)(X5 = 0)(X6 = 0)(X7 = 0)(X8 = 0)(X9 = 0)(X10 = 0)(X11 = 0)(X12 = 0)(X13 = 0)(X14 = 0)(X15 = 0)] 
+   JUMP ['1']
+  DEBUG   vm:simulation    TICK 26 PREV_MPC: 20 CUR_MPC: 0 
+   REGS: [(X0 = 115)(X1 = 0)(X2 = 0)(X3 = 0)(X4 = 0)(X5 = 0)(X6 = 0)(X7 = 0)(X8 = 0)(X9 = 0)(X10 = 0)(X11 = 0)(X12 = 0)(X13 = 0)(X14 = 0)(X15 = 0)] 
+   IN ['x0', 'x1']
+  DEBUG   vm:simulation    NEW INSTRUCTION
+  DEBUG   vm:simulation    ------------------
+  DEBUG   vm:simulation    TICK 27 PREV_MPC: 0 CUR_MPC: 2 
+   REGS: [(X0 = 115)(X1 = 0)(X2 = 0)(X3 = 0)(X4 = 0)(X5 = 0)(X6 = 0)(X7 = 0)(X8 = 0)(X9 = 0)(X10 = 0)(X11 = 0)(X12 = 0)(X13 = 0)(X14 = 0)(X15 = 0)] 
+   IN ['x0', 'x1']
+  DEBUG   vm:simulation    TICK 28 PREV_MPC: 2 CUR_MPC: 0 
+   REGS: [(X0 = 116)(X1 = 0)(X2 = 0)(X3 = 0)(X4 = 0)(X5 = 0)(X6 = 0)(X7 = 0)(X8 = 0)(X9 = 0)(X10 = 0)(X11 = 0)(X12 = 0)(X13 = 0)(X14 = 0)(X15 = 0)] 
+   JE ['x0', '5']
+  DEBUG   vm:simulation    NEW INSTRUCTION
+  DEBUG   vm:simulation    ------------------
+  DEBUG   vm:simulation    TICK 29 PREV_MPC: 0 CUR_MPC: 19 
+   REGS: [(X0 = 116)(X1 = 0)(X2 = 0)(X3 = 0)(X4 = 0)(X5 = 0)(X6 = 0)(X7 = 0)(X8 = 0)(X9 = 0)(X10 = 0)(X11 = 0)(X12 = 0)(X13 = 0)(X14 = 0)(X15 = 0)] 
+   JE ['x0', '5']
+  DEBUG   vm:simulation    TICK 30 PREV_MPC: 19 CUR_MPC: 0 
+   REGS: [(X0 = 116)(X1 = 0)(X2 = 0)(X3 = 0)(X4 = 0)(X5 = 0)(X6 = 0)(X7 = 0)(X8 = 0)(X9 = 0)(X10 = 0)(X11 = 0)(X12 = 0)(X13 = 0)(X14 = 0)(X15 = 0)] 
+   OUT ['x1', 'x0']
+  DEBUG   vm:simulation    NEW INSTRUCTION
+  DEBUG   vm:simulation    ------------------
+  DEBUG   vm:simulation    TICK 31 PREV_MPC: 0 CUR_MPC: 3 
+   REGS: [(X0 = 116)(X1 = 0)(X2 = 0)(X3 = 0)(X4 = 0)(X5 = 0)(X6 = 0)(X7 = 0)(X8 = 0)(X9 = 0)(X10 = 0)(X11 = 0)(X12 = 0)(X13 = 0)(X14 = 0)(X15 = 0)] 
+   OUT ['x1', 'x0']
+  DEBUG   vm:simulation    TICK 32 PREV_MPC: 3 CUR_MPC: 0 
+   REGS: [(X0 = 116)(X1 = 0)(X2 = 0)(X3 = 0)(X4 = 0)(X5 = 0)(X6 = 0)(X7 = 0)(X8 = 0)(X9 = 0)(X10 = 0)(X11 = 0)(X12 = 0)(X13 = 0)(X14 = 0)(X15 = 0)] 
+   JUMP ['1']
+  DEBUG   vm:simulation    NEW INSTRUCTION
+  DEBUG   vm:simulation    ------------------
+  DEBUG   vm:simulation    TICK 33 PREV_MPC: 0 CUR_MPC: 20 
+   REGS: [(X0 = 116)(X1 = 0)(X2 = 0)(X3 = 0)(X4 = 0)(X5 = 0)(X6 = 0)(X7 = 0)(X8 = 0)(X9 = 0)(X10 = 0)(X11 = 0)(X12 = 0)(X13 = 0)(X14 = 0)(X15 = 0)] 
+   JUMP ['1']
+  DEBUG   vm:simulation    TICK 34 PREV_MPC: 20 CUR_MPC: 0 
+   REGS: [(X0 = 116)(X1 = 0)(X2 = 0)(X3 = 0)(X4 = 0)(X5 = 0)(X6 = 0)(X7 = 0)(X8 = 0)(X9 = 0)(X10 = 0)(X11 = 0)(X12 = 0)(X13 = 0)(X14 = 0)(X15 = 0)] 
+   IN ['x0', 'x1']
+  DEBUG   vm:simulation    NEW INSTRUCTION
+  DEBUG   vm:simulation    ------------------
+  DEBUG   vm:simulation    TICK 35 PREV_MPC: 0 CUR_MPC: 2 
+   REGS: [(X0 = 116)(X1 = 0)(X2 = 0)(X3 = 0)(X4 = 0)(X5 = 0)(X6 = 0)(X7 = 0)(X8 = 0)(X9 = 0)(X10 = 0)(X11 = 0)(X12 = 0)(X13 = 0)(X14 = 0)(X15 = 0)] 
+   IN ['x0', 'x1']
+  DEBUG   vm:simulation    TICK 36 PREV_MPC: 2 CUR_MPC: 0 
+   REGS: [(X0 = 105)(X1 = 0)(X2 = 0)(X3 = 0)(X4 = 0)(X5 = 0)(X6 = 0)(X7 = 0)(X8 = 0)(X9 = 0)(X10 = 0)(X11 = 0)(X12 = 0)(X13 = 0)(X14 = 0)(X15 = 0)] 
+   JE ['x0', '5']
+  DEBUG   vm:simulation    NEW INSTRUCTION
+  DEBUG   vm:simulation    ------------------
+  DEBUG   vm:simulation    TICK 37 PREV_MPC: 0 CUR_MPC: 19 
+   REGS: [(X0 = 105)(X1 = 0)(X2 = 0)(X3 = 0)(X4 = 0)(X5 = 0)(X6 = 0)(X7 = 0)(X8 = 0)(X9 = 0)(X10 = 0)(X11 = 0)(X12 = 0)(X13 = 0)(X14 = 0)(X15 = 0)] 
+   JE ['x0', '5']
+  DEBUG   vm:simulation    TICK 38 PREV_MPC: 19 CUR_MPC: 0 
+   REGS: [(X0 = 105)(X1 = 0)(X2 = 0)(X3 = 0)(X4 = 0)(X5 = 0)(X6 = 0)(X7 = 0)(X8 = 0)(X9 = 0)(X10 = 0)(X11 = 0)(X12 = 0)(X13 = 0)(X14 = 0)(X15 = 0)] 
+   OUT ['x1', 'x0']
+  DEBUG   vm:simulation    NEW INSTRUCTION
+  DEBUG   vm:simulation    ------------------
+  DEBUG   vm:simulation    TICK 39 PREV_MPC: 0 CUR_MPC: 3 
+   REGS: [(X0 = 105)(X1 = 0)(X2 = 0)(X3 = 0)(X4 = 0)(X5 = 0)(X6 = 0)(X7 = 0)(X8 = 0)(X9 = 0)(X10 = 0)(X11 = 0)(X12 = 0)(X13 = 0)(X14 = 0)(X15 = 0)] 
+   OUT ['x1', 'x0']
+  DEBUG   vm:simulation    TICK 40 PREV_MPC: 3 CUR_MPC: 0 
+   REGS: [(X0 = 105)(X1 = 0)(X2 = 0)(X3 = 0)(X4 = 0)(X5 = 0)(X6 = 0)(X7 = 0)(X8 = 0)(X9 = 0)(X10 = 0)(X11 = 0)(X12 = 0)(X13 = 0)(X14 = 0)(X15 = 0)] 
+   JUMP ['1']
+  DEBUG   vm:simulation    NEW INSTRUCTION
+  DEBUG   vm:simulation    ------------------
+  DEBUG   vm:simulation    TICK 41 PREV_MPC: 0 CUR_MPC: 20 
+   REGS: [(X0 = 105)(X1 = 0)(X2 = 0)(X3 = 0)(X4 = 0)(X5 = 0)(X6 = 0)(X7 = 0)(X8 = 0)(X9 = 0)(X10 = 0)(X11 = 0)(X12 = 0)(X13 = 0)(X14 = 0)(X15 = 0)] 
+   JUMP ['1']
+  DEBUG   vm:simulation    TICK 42 PREV_MPC: 20 CUR_MPC: 0 
+   REGS: [(X0 = 105)(X1 = 0)(X2 = 0)(X3 = 0)(X4 = 0)(X5 = 0)(X6 = 0)(X7 = 0)(X8 = 0)(X9 = 0)(X10 = 0)(X11 = 0)(X12 = 0)(X13 = 0)(X14 = 0)(X15 = 0)] 
+   IN ['x0', 'x1']
+  DEBUG   vm:simulation    NEW INSTRUCTION
+  DEBUG   vm:simulation    ------------------
+  DEBUG   vm:simulation    TICK 43 PREV_MPC: 0 CUR_MPC: 2 
+   REGS: [(X0 = 105)(X1 = 0)(X2 = 0)(X3 = 0)(X4 = 0)(X5 = 0)(X6 = 0)(X7 = 0)(X8 = 0)(X9 = 0)(X10 = 0)(X11 = 0)(X12 = 0)(X13 = 0)(X14 = 0)(X15 = 0)] 
+   IN ['x0', 'x1']
+  DEBUG   vm:simulation    TICK 44 PREV_MPC: 2 CUR_MPC: 0 
+   REGS: [(X0 = 110)(X1 = 0)(X2 = 0)(X3 = 0)(X4 = 0)(X5 = 0)(X6 = 0)(X7 = 0)(X8 = 0)(X9 = 0)(X10 = 0)(X11 = 0)(X12 = 0)(X13 = 0)(X14 = 0)(X15 = 0)] 
+   JE ['x0', '5']
+  DEBUG   vm:simulation    NEW INSTRUCTION
+  DEBUG   vm:simulation    ------------------
+  DEBUG   vm:simulation    TICK 45 PREV_MPC: 0 CUR_MPC: 19 
+   REGS: [(X0 = 110)(X1 = 0)(X2 = 0)(X3 = 0)(X4 = 0)(X5 = 0)(X6 = 0)(X7 = 0)(X8 = 0)(X9 = 0)(X10 = 0)(X11 = 0)(X12 = 0)(X13 = 0)(X14 = 0)(X15 = 0)] 
+   JE ['x0', '5']
+  DEBUG   vm:simulation    TICK 46 PREV_MPC: 19 CUR_MPC: 0 
+   REGS: [(X0 = 110)(X1 = 0)(X2 = 0)(X3 = 0)(X4 = 0)(X5 = 0)(X6 = 0)(X7 = 0)(X8 = 0)(X9 = 0)(X10 = 0)(X11 = 0)(X12 = 0)(X13 = 0)(X14 = 0)(X15 = 0)] 
+   OUT ['x1', 'x0']
+  DEBUG   vm:simulation    NEW INSTRUCTION
+  DEBUG   vm:simulation    ------------------
+  DEBUG   vm:simulation    TICK 47 PREV_MPC: 0 CUR_MPC: 3 
+   REGS: [(X0 = 110)(X1 = 0)(X2 = 0)(X3 = 0)(X4 = 0)(X5 = 0)(X6 = 0)(X7 = 0)(X8 = 0)(X9 = 0)(X10 = 0)(X11 = 0)(X12 = 0)(X13 = 0)(X14 = 0)(X15 = 0)] 
+   OUT ['x1', 'x0']
+  DEBUG   vm:simulation    TICK 48 PREV_MPC: 3 CUR_MPC: 0 
+   REGS: [(X0 = 110)(X1 = 0)(X2 = 0)(X3 = 0)(X4 = 0)(X5 = 0)(X6 = 0)(X7 = 0)(X8 = 0)(X9 = 0)(X10 = 0)(X11 = 0)(X12 = 0)(X13 = 0)(X14 = 0)(X15 = 0)] 
+   JUMP ['1']
+  DEBUG   vm:simulation    NEW INSTRUCTION
+  DEBUG   vm:simulation    ------------------
+  DEBUG   vm:simulation    TICK 49 PREV_MPC: 0 CUR_MPC: 20 
+   REGS: [(X0 = 110)(X1 = 0)(X2 = 0)(X3 = 0)(X4 = 0)(X5 = 0)(X6 = 0)(X7 = 0)(X8 = 0)(X9 = 0)(X10 = 0)(X11 = 0)(X12 = 0)(X13 = 0)(X14 = 0)(X15 = 0)] 
+   JUMP ['1']
+  DEBUG   vm:simulation    TICK 50 PREV_MPC: 20 CUR_MPC: 0 
+   REGS: [(X0 = 110)(X1 = 0)(X2 = 0)(X3 = 0)(X4 = 0)(X5 = 0)(X6 = 0)(X7 = 0)(X8 = 0)(X9 = 0)(X10 = 0)(X11 = 0)(X12 = 0)(X13 = 0)(X14 = 0)(X15 = 0)] 
+   IN ['x0', 'x1']
+  DEBUG   vm:simulation    NEW INSTRUCTION
+  DEBUG   vm:simulation    ------------------
+  DEBUG   vm:simulation    TICK 51 PREV_MPC: 0 CUR_MPC: 2 
+   REGS: [(X0 = 110)(X1 = 0)(X2 = 0)(X3 = 0)(X4 = 0)(X5 = 0)(X6 = 0)(X7 = 0)(X8 = 0)(X9 = 0)(X10 = 0)(X11 = 0)(X12 = 0)(X13 = 0)(X14 = 0)(X15 = 0)] 
+   IN ['x0', 'x1']
+  DEBUG   vm:simulation    TICK 52 PREV_MPC: 2 CUR_MPC: 0 
+   REGS: [(X0 = 103)(X1 = 0)(X2 = 0)(X3 = 0)(X4 = 0)(X5 = 0)(X6 = 0)(X7 = 0)(X8 = 0)(X9 = 0)(X10 = 0)(X11 = 0)(X12 = 0)(X13 = 0)(X14 = 0)(X15 = 0)] 
+   JE ['x0', '5']
+  DEBUG   vm:simulation    NEW INSTRUCTION
+  DEBUG   vm:simulation    ------------------
+  DEBUG   vm:simulation    TICK 53 PREV_MPC: 0 CUR_MPC: 19 
+   REGS: [(X0 = 103)(X1 = 0)(X2 = 0)(X3 = 0)(X4 = 0)(X5 = 0)(X6 = 0)(X7 = 0)(X8 = 0)(X9 = 0)(X10 = 0)(X11 = 0)(X12 = 0)(X13 = 0)(X14 = 0)(X15 = 0)] 
+   JE ['x0', '5']
+  DEBUG   vm:simulation    TICK 54 PREV_MPC: 19 CUR_MPC: 0 
+   REGS: [(X0 = 103)(X1 = 0)(X2 = 0)(X3 = 0)(X4 = 0)(X5 = 0)(X6 = 0)(X7 = 0)(X8 = 0)(X9 = 0)(X10 = 0)(X11 = 0)(X12 = 0)(X13 = 0)(X14 = 0)(X15 = 0)] 
+   OUT ['x1', 'x0']
+  DEBUG   vm:simulation    NEW INSTRUCTION
+  DEBUG   vm:simulation    ------------------
+  DEBUG   vm:simulation    TICK 55 PREV_MPC: 0 CUR_MPC: 3 
+   REGS: [(X0 = 103)(X1 = 0)(X2 = 0)(X3 = 0)(X4 = 0)(X5 = 0)(X6 = 0)(X7 = 0)(X8 = 0)(X9 = 0)(X10 = 0)(X11 = 0)(X12 = 0)(X13 = 0)(X14 = 0)(X15 = 0)] 
+   OUT ['x1', 'x0']
+  DEBUG   vm:simulation    TICK 56 PREV_MPC: 3 CUR_MPC: 0 
+   REGS: [(X0 = 103)(X1 = 0)(X2 = 0)(X3 = 0)(X4 = 0)(X5 = 0)(X6 = 0)(X7 = 0)(X8 = 0)(X9 = 0)(X10 = 0)(X11 = 0)(X12 = 0)(X13 = 0)(X14 = 0)(X15 = 0)] 
+   JUMP ['1']
+  DEBUG   vm:simulation    NEW INSTRUCTION
+  DEBUG   vm:simulation    ------------------
+  DEBUG   vm:simulation    TICK 57 PREV_MPC: 0 CUR_MPC: 20 
+   REGS: [(X0 = 103)(X1 = 0)(X2 = 0)(X3 = 0)(X4 = 0)(X5 = 0)(X6 = 0)(X7 = 0)(X8 = 0)(X9 = 0)(X10 = 0)(X11 = 0)(X12 = 0)(X13 = 0)(X14 = 0)(X15 = 0)] 
+   JUMP ['1']
+  DEBUG   vm:simulation    TICK 58 PREV_MPC: 20 CUR_MPC: 0 
+   REGS: [(X0 = 103)(X1 = 0)(X2 = 0)(X3 = 0)(X4 = 0)(X5 = 0)(X6 = 0)(X7 = 0)(X8 = 0)(X9 = 0)(X10 = 0)(X11 = 0)(X12 = 0)(X13 = 0)(X14 = 0)(X15 = 0)] 
+   IN ['x0', 'x1']
+  DEBUG   vm:simulation    NEW INSTRUCTION
+  DEBUG   vm:simulation    ------------------
+  DEBUG   vm:simulation    TICK 59 PREV_MPC: 0 CUR_MPC: 2 
+   REGS: [(X0 = 103)(X1 = 0)(X2 = 0)(X3 = 0)(X4 = 0)(X5 = 0)(X6 = 0)(X7 = 0)(X8 = 0)(X9 = 0)(X10 = 0)(X11 = 0)(X12 = 0)(X13 = 0)(X14 = 0)(X15 = 0)] 
+   IN ['x0', 'x1']
+  DEBUG   vm:simulation    TICK 60 PREV_MPC: 2 CUR_MPC: 0 
+   REGS: [(X0 = 32)(X1 = 0)(X2 = 0)(X3 = 0)(X4 = 0)(X5 = 0)(X6 = 0)(X7 = 0)(X8 = 0)(X9 = 0)(X10 = 0)(X11 = 0)(X12 = 0)(X13 = 0)(X14 = 0)(X15 = 0)] 
+   JE ['x0', '5']
+  DEBUG   vm:simulation    NEW INSTRUCTION
+  DEBUG   vm:simulation    ------------------
+  DEBUG   vm:simulation    TICK 61 PREV_MPC: 0 CUR_MPC: 19 
+   REGS: [(X0 = 32)(X1 = 0)(X2 = 0)(X3 = 0)(X4 = 0)(X5 = 0)(X6 = 0)(X7 = 0)(X8 = 0)(X9 = 0)(X10 = 0)(X11 = 0)(X12 = 0)(X13 = 0)(X14 = 0)(X15 = 0)] 
+   JE ['x0', '5']
+  DEBUG   vm:simulation    TICK 62 PREV_MPC: 19 CUR_MPC: 0 
+   REGS: [(X0 = 32)(X1 = 0)(X2 = 0)(X3 = 0)(X4 = 0)(X5 = 0)(X6 = 0)(X7 = 0)(X8 = 0)(X9 = 0)(X10 = 0)(X11 = 0)(X12 = 0)(X13 = 0)(X14 = 0)(X15 = 0)] 
+   OUT ['x1', 'x0']
+  DEBUG   vm:simulation    NEW INSTRUCTION
+  DEBUG   vm:simulation    ------------------
+  DEBUG   vm:simulation    TICK 63 PREV_MPC: 0 CUR_MPC: 3 
+   REGS: [(X0 = 32)(X1 = 0)(X2 = 0)(X3 = 0)(X4 = 0)(X5 = 0)(X6 = 0)(X7 = 0)(X8 = 0)(X9 = 0)(X10 = 0)(X11 = 0)(X12 = 0)(X13 = 0)(X14 = 0)(X15 = 0)] 
+   OUT ['x1', 'x0']
+  DEBUG   vm:simulation    TICK 64 PREV_MPC: 3 CUR_MPC: 0 
+   REGS: [(X0 = 32)(X1 = 0)(X2 = 0)(X3 = 0)(X4 = 0)(X5 = 0)(X6 = 0)(X7 = 0)(X8 = 0)(X9 = 0)(X10 = 0)(X11 = 0)(X12 = 0)(X13 = 0)(X14 = 0)(X15 = 0)] 
+   JUMP ['1']
+  DEBUG   vm:simulation    NEW INSTRUCTION
+  DEBUG   vm:simulation    ------------------
+  DEBUG   vm:simulation    TICK 65 PREV_MPC: 0 CUR_MPC: 20 
+   REGS: [(X0 = 32)(X1 = 0)(X2 = 0)(X3 = 0)(X4 = 0)(X5 = 0)(X6 = 0)(X7 = 0)(X8 = 0)(X9 = 0)(X10 = 0)(X11 = 0)(X12 = 0)(X13 = 0)(X14 = 0)(X15 = 0)] 
+   JUMP ['1']
+  DEBUG   vm:simulation    TICK 66 PREV_MPC: 20 CUR_MPC: 0 
+   REGS: [(X0 = 32)(X1 = 0)(X2 = 0)(X3 = 0)(X4 = 0)(X5 = 0)(X6 = 0)(X7 = 0)(X8 = 0)(X9 = 0)(X10 = 0)(X11 = 0)(X12 = 0)(X13 = 0)(X14 = 0)(X15 = 0)] 
+   IN ['x0', 'x1']
+  DEBUG   vm:simulation    NEW INSTRUCTION
+  DEBUG   vm:simulation    ------------------
+  DEBUG   vm:simulation    TICK 67 PREV_MPC: 0 CUR_MPC: 2 
+   REGS: [(X0 = 32)(X1 = 0)(X2 = 0)(X3 = 0)(X4 = 0)(X5 = 0)(X6 = 0)(X7 = 0)(X8 = 0)(X9 = 0)(X10 = 0)(X11 = 0)(X12 = 0)(X13 = 0)(X14 = 0)(X15 = 0)] 
+   IN ['x0', 'x1']
+  DEBUG   vm:simulation    TICK 68 PREV_MPC: 2 CUR_MPC: 0 
+   REGS: [(X0 = 99)(X1 = 0)(X2 = 0)(X3 = 0)(X4 = 0)(X5 = 0)(X6 = 0)(X7 = 0)(X8 = 0)(X9 = 0)(X10 = 0)(X11 = 0)(X12 = 0)(X13 = 0)(X14 = 0)(X15 = 0)] 
+   JE ['x0', '5']
+  DEBUG   vm:simulation    NEW INSTRUCTION
+  DEBUG   vm:simulation    ------------------
+  DEBUG   vm:simulation    TICK 69 PREV_MPC: 0 CUR_MPC: 19 
+   REGS: [(X0 = 99)(X1 = 0)(X2 = 0)(X3 = 0)(X4 = 0)(X5 = 0)(X6 = 0)(X7 = 0)(X8 = 0)(X9 = 0)(X10 = 0)(X11 = 0)(X12 = 0)(X13 = 0)(X14 = 0)(X15 = 0)] 
+   JE ['x0', '5']
+  DEBUG   vm:simulation    TICK 70 PREV_MPC: 19 CUR_MPC: 0 
+   REGS: [(X0 = 99)(X1 = 0)(X2 = 0)(X3 = 0)(X4 = 0)(X5 = 0)(X6 = 0)(X7 = 0)(X8 = 0)(X9 = 0)(X10 = 0)(X11 = 0)(X12 = 0)(X13 = 0)(X14 = 0)(X15 = 0)] 
+   OUT ['x1', 'x0']
+  DEBUG   vm:simulation    NEW INSTRUCTION
+  DEBUG   vm:simulation    ------------------
+  DEBUG   vm:simulation    TICK 71 PREV_MPC: 0 CUR_MPC: 3 
+   REGS: [(X0 = 99)(X1 = 0)(X2 = 0)(X3 = 0)(X4 = 0)(X5 = 0)(X6 = 0)(X7 = 0)(X8 = 0)(X9 = 0)(X10 = 0)(X11 = 0)(X12 = 0)(X13 = 0)(X14 = 0)(X15 = 0)] 
+   OUT ['x1', 'x0']
+  DEBUG   vm:simulation    TICK 72 PREV_MPC: 3 CUR_MPC: 0 
+   REGS: [(X0 = 99)(X1 = 0)(X2 = 0)(X3 = 0)(X4 = 0)(X5 = 0)(X6 = 0)(X7 = 0)(X8 = 0)(X9 = 0)(X10 = 0)(X11 = 0)(X12 = 0)(X13 = 0)(X14 = 0)(X15 = 0)] 
+   JUMP ['1']
+  DEBUG   vm:simulation    NEW INSTRUCTION
+  DEBUG   vm:simulation    ------------------
+  DEBUG   vm:simulation    TICK 73 PREV_MPC: 0 CUR_MPC: 20 
+   REGS: [(X0 = 99)(X1 = 0)(X2 = 0)(X3 = 0)(X4 = 0)(X5 = 0)(X6 = 0)(X7 = 0)(X8 = 0)(X9 = 0)(X10 = 0)(X11 = 0)(X12 = 0)(X13 = 0)(X14 = 0)(X15 = 0)] 
+   JUMP ['1']
+  DEBUG   vm:simulation    TICK 74 PREV_MPC: 20 CUR_MPC: 0 
+   REGS: [(X0 = 99)(X1 = 0)(X2 = 0)(X3 = 0)(X4 = 0)(X5 = 0)(X6 = 0)(X7 = 0)(X8 = 0)(X9 = 0)(X10 = 0)(X11 = 0)(X12 = 0)(X13 = 0)(X14 = 0)(X15 = 0)] 
+   IN ['x0', 'x1']
+  DEBUG   vm:simulation    NEW INSTRUCTION
+  DEBUG   vm:simulation    ------------------
+  DEBUG   vm:simulation    TICK 75 PREV_MPC: 0 CUR_MPC: 2 
+   REGS: [(X0 = 99)(X1 = 0)(X2 = 0)(X3 = 0)(X4 = 0)(X5 = 0)(X6 = 0)(X7 = 0)(X8 = 0)(X9 = 0)(X10 = 0)(X11 = 0)(X12 = 0)(X13 = 0)(X14 = 0)(X15 = 0)] 
+   IN ['x0', 'x1']
+  DEBUG   vm:simulation    TICK 76 PREV_MPC: 2 CUR_MPC: 0 
+   REGS: [(X0 = 97)(X1 = 0)(X2 = 0)(X3 = 0)(X4 = 0)(X5 = 0)(X6 = 0)(X7 = 0)(X8 = 0)(X9 = 0)(X10 = 0)(X11 = 0)(X12 = 0)(X13 = 0)(X14 = 0)(X15 = 0)] 
+   JE ['x0', '5']
+  DEBUG   vm:simulation    NEW INSTRUCTION
+  DEBUG   vm:simulation    ------------------
+  DEBUG   vm:simulation    TICK 77 PREV_MPC: 0 CUR_MPC: 19 
+   REGS: [(X0 = 97)(X1 = 0)(X2 = 0)(X3 = 0)(X4 = 0)(X5 = 0)(X6 = 0)(X7 = 0)(X8 = 0)(X9 = 0)(X10 = 0)(X11 = 0)(X12 = 0)(X13 = 0)(X14 = 0)(X15 = 0)] 
+   JE ['x0', '5']
+  DEBUG   vm:simulation    TICK 78 PREV_MPC: 19 CUR_MPC: 0 
+   REGS: [(X0 = 97)(X1 = 0)(X2 = 0)(X3 = 0)(X4 = 0)(X5 = 0)(X6 = 0)(X7 = 0)(X8 = 0)(X9 = 0)(X10 = 0)(X11 = 0)(X12 = 0)(X13 = 0)(X14 = 0)(X15 = 0)] 
+   OUT ['x1', 'x0']
+  DEBUG   vm:simulation    NEW INSTRUCTION
+  DEBUG   vm:simulation    ------------------
+  DEBUG   vm:simulation    TICK 79 PREV_MPC: 0 CUR_MPC: 3 
+   REGS: [(X0 = 97)(X1 = 0)(X2 = 0)(X3 = 0)(X4 = 0)(X5 = 0)(X6 = 0)(X7 = 0)(X8 = 0)(X9 = 0)(X10 = 0)(X11 = 0)(X12 = 0)(X13 = 0)(X14 = 0)(X15 = 0)] 
+   OUT ['x1', 'x0']
+  DEBUG   vm:simulation    TICK 80 PREV_MPC: 3 CUR_MPC: 0 
+   REGS: [(X0 = 97)(X1 = 0)(X2 = 0)(X3 = 0)(X4 = 0)(X5 = 0)(X6 = 0)(X7 = 0)(X8 = 0)(X9 = 0)(X10 = 0)(X11 = 0)(X12 = 0)(X13 = 0)(X14 = 0)(X15 = 0)] 
+   JUMP ['1']
+  DEBUG   vm:simulation    NEW INSTRUCTION
+  DEBUG   vm:simulation    ------------------
+  DEBUG   vm:simulation    TICK 81 PREV_MPC: 0 CUR_MPC: 20 
+   REGS: [(X0 = 97)(X1 = 0)(X2 = 0)(X3 = 0)(X4 = 0)(X5 = 0)(X6 = 0)(X7 = 0)(X8 = 0)(X9 = 0)(X10 = 0)(X11 = 0)(X12 = 0)(X13 = 0)(X14 = 0)(X15 = 0)] 
+   JUMP ['1']
+  DEBUG   vm:simulation    TICK 82 PREV_MPC: 20 CUR_MPC: 0 
+   REGS: [(X0 = 97)(X1 = 0)(X2 = 0)(X3 = 0)(X4 = 0)(X5 = 0)(X6 = 0)(X7 = 0)(X8 = 0)(X9 = 0)(X10 = 0)(X11 = 0)(X12 = 0)(X13 = 0)(X14 = 0)(X15 = 0)] 
+   IN ['x0', 'x1']
+  DEBUG   vm:simulation    NEW INSTRUCTION
+  DEBUG   vm:simulation    ------------------
+  DEBUG   vm:simulation    TICK 83 PREV_MPC: 0 CUR_MPC: 2 
+   REGS: [(X0 = 97)(X1 = 0)(X2 = 0)(X3 = 0)(X4 = 0)(X5 = 0)(X6 = 0)(X7 = 0)(X8 = 0)(X9 = 0)(X10 = 0)(X11 = 0)(X12 = 0)(X13 = 0)(X14 = 0)(X15 = 0)] 
+   IN ['x0', 'x1']
+  DEBUG   vm:simulation    TICK 84 PREV_MPC: 2 CUR_MPC: 0 
+   REGS: [(X0 = 116)(X1 = 0)(X2 = 0)(X3 = 0)(X4 = 0)(X5 = 0)(X6 = 0)(X7 = 0)(X8 = 0)(X9 = 0)(X10 = 0)(X11 = 0)(X12 = 0)(X13 = 0)(X14 = 0)(X15 = 0)] 
+   JE ['x0', '5']
+  DEBUG   vm:simulation    NEW INSTRUCTION
+  DEBUG   vm:simulation    ------------------
+  DEBUG   vm:simulation    TICK 85 PREV_MPC: 0 CUR_MPC: 19 
+   REGS: [(X0 = 116)(X1 = 0)(X2 = 0)(X3 = 0)(X4 = 0)(X5 = 0)(X6 = 0)(X7 = 0)(X8 = 0)(X9 = 0)(X10 = 0)(X11 = 0)(X12 = 0)(X13 = 0)(X14 = 0)(X15 = 0)] 
+   JE ['x0', '5']
+  DEBUG   vm:simulation    TICK 86 PREV_MPC: 19 CUR_MPC: 0 
+   REGS: [(X0 = 116)(X1 = 0)(X2 = 0)(X3 = 0)(X4 = 0)(X5 = 0)(X6 = 0)(X7 = 0)(X8 = 0)(X9 = 0)(X10 = 0)(X11 = 0)(X12 = 0)(X13 = 0)(X14 = 0)(X15 = 0)] 
+   OUT ['x1', 'x0']
+  DEBUG   vm:simulation    NEW INSTRUCTION
+  DEBUG   vm:simulation    ------------------
+  DEBUG   vm:simulation    TICK 87 PREV_MPC: 0 CUR_MPC: 3 
+   REGS: [(X0 = 116)(X1 = 0)(X2 = 0)(X3 = 0)(X4 = 0)(X5 = 0)(X6 = 0)(X7 = 0)(X8 = 0)(X9 = 0)(X10 = 0)(X11 = 0)(X12 = 0)(X13 = 0)(X14 = 0)(X15 = 0)] 
+   OUT ['x1', 'x0']
+  DEBUG   vm:simulation    TICK 88 PREV_MPC: 3 CUR_MPC: 0 
+   REGS: [(X0 = 116)(X1 = 0)(X2 = 0)(X3 = 0)(X4 = 0)(X5 = 0)(X6 = 0)(X7 = 0)(X8 = 0)(X9 = 0)(X10 = 0)(X11 = 0)(X12 = 0)(X13 = 0)(X14 = 0)(X15 = 0)] 
+   JUMP ['1']
+  DEBUG   vm:simulation    NEW INSTRUCTION
+  DEBUG   vm:simulation    ------------------
+  DEBUG   vm:simulation    TICK 89 PREV_MPC: 0 CUR_MPC: 20 
+   REGS: [(X0 = 116)(X1 = 0)(X2 = 0)(X3 = 0)(X4 = 0)(X5 = 0)(X6 = 0)(X7 = 0)(X8 = 0)(X9 = 0)(X10 = 0)(X11 = 0)(X12 = 0)(X13 = 0)(X14 = 0)(X15 = 0)] 
+   JUMP ['1']
+  DEBUG   vm:simulation    TICK 90 PREV_MPC: 20 CUR_MPC: 0 
+   REGS: [(X0 = 116)(X1 = 0)(X2 = 0)(X3 = 0)(X4 = 0)(X5 = 0)(X6 = 0)(X7 = 0)(X8 = 0)(X9 = 0)(X10 = 0)(X11 = 0)(X12 = 0)(X13 = 0)(X14 = 0)(X15 = 0)] 
+   IN ['x0', 'x1']
+  DEBUG   vm:simulation    NEW INSTRUCTION
+  DEBUG   vm:simulation    ------------------
+  DEBUG   vm:simulation    TICK 91 PREV_MPC: 0 CUR_MPC: 2 
+   REGS: [(X0 = 116)(X1 = 0)(X2 = 0)(X3 = 0)(X4 = 0)(X5 = 0)(X6 = 0)(X7 = 0)(X8 = 0)(X9 = 0)(X10 = 0)(X11 = 0)(X12 = 0)(X13 = 0)(X14 = 0)(X15 = 0)] 
+   IN ['x0', 'x1']
+  DEBUG   vm:simulation    TICK 92 PREV_MPC: 2 CUR_MPC: 0 
+   REGS: [(X0 = 0)(X1 = 0)(X2 = 0)(X3 = 0)(X4 = 0)(X5 = 0)(X6 = 0)(X7 = 0)(X8 = 0)(X9 = 0)(X10 = 0)(X11 = 0)(X12 = 0)(X13 = 0)(X14 = 0)(X15 = 0)] 
+   JE ['x0', '5']
+  DEBUG   vm:simulation    NEW INSTRUCTION
+  DEBUG   vm:simulation    ------------------
+  DEBUG   vm:simulation    TICK 93 PREV_MPC: 0 CUR_MPC: 19 
+   REGS: [(X0 = 0)(X1 = 0)(X2 = 0)(X3 = 0)(X4 = 0)(X5 = 0)(X6 = 0)(X7 = 0)(X8 = 0)(X9 = 0)(X10 = 0)(X11 = 0)(X12 = 0)(X13 = 0)(X14 = 0)(X15 = 0)] 
+   JE ['x0', '5']
+  DEBUG   vm:simulation    TICK 94 PREV_MPC: 19 CUR_MPC: 0 
+   REGS: [(X0 = 0)(X1 = 0)(X2 = 0)(X3 = 0)(X4 = 0)(X5 = 0)(X6 = 0)(X7 = 0)(X8 = 0)(X9 = 0)(X10 = 0)(X11 = 0)(X12 = 0)(X13 = 0)(X14 = 0)(X15 = 0)] 
+   HLT []
+  DEBUG   vm:simulation    NEW INSTRUCTION
+  DEBUG   vm:simulation    ------------------
+  DEBUG   vm:simulation    Program has ended with halt

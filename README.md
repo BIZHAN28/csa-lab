@@ -186,6 +186,7 @@ s
 Формат запуска: `./vm.py <machine_code_file> <input_file>`
 ### DataPath
 ![](doc/scheme_datapath.png)
+
 Реализован в классе `DataPath`.
 Сигналы:
 - `WriteMem` - записать значение в память
@@ -217,6 +218,7 @@ s
 - `positive` - отражает наличие положительного значения в аккумуляторе
 ### ControlUnit
 ![](doc/scheme_controlunit.png)
+
 Реализован в классе `ControlUnit`
 
 Сигналы:

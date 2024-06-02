@@ -8,4 +8,3 @@ section .code
     jmp .loop
 .exit:
     hlt
-

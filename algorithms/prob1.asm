@@ -47,4 +47,3 @@ section .code
     jmp .print_loop
 .hlt:
     hlt
-

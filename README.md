@@ -170,15 +170,14 @@ s
           "0": {
               "opcode": "command",
               "args": [
-                  "arg1",
-                  "arg2",
-				  "arg3"
+		"arg1",
+                "arg2",
+		"arg3"
               ]
           }
 	}
 }
 ```
-
 Где:
 * `data_mem` – память данных
 * `start` -  точка входа в памяти инструкций
@@ -201,6 +200,7 @@ s
 Формат запуска: `./vm.py <machine_code_file> <input_file>`
 ### DataPath
 ![](doc/scheme_datapath.png)
+
 Реализован в классе `DataPath`.
 - `Registers (r0-r15)` - регистры общего назначения
 - `IO Controller` - контроллер внешних устройств
@@ -236,6 +236,7 @@ s
 - `positive` - отражает наличие положительного значения в аккумуляторе
 ### ControlUnit
 ![](doc/scheme_controlunit.png)
+
 Реализован в классе `ControlUnit`
 
 - `Program Counter `- счетчик команд

@@ -64,19 +64,19 @@ OPCODES_IMPLS = {
 
 
 class ALU:
-    negative: bool = False
+    positive: bool = False
     zero: bool = False
 
     def process(self, sig: Signal, left: int, right: int) -> int:
         ans: int = 0
         if sig == Signal.CmpALU:
             calc = left - right
-            self.negative = calc < 0
+            self.positive = calc > 0
             self.zero = calc == 0
             ans = left
         elif sig in OPCODES_IMPLS:
             ans = OPCODES_IMPLS[sig](left, right)
-            self.negative = ans < 0
+            self.positive = ans > 0
             self.zero = ans == 0
         else:
             raise ValueError(f"Invalid signal: {sig}")
@@ -141,8 +141,8 @@ class DataPath:
     def get_zero_flag(self) -> bool:
         return self.alu.zero
 
-    def get_negative_flag(self) -> bool:
-        return self.alu.negative
+    def get_positive_flag(self) -> bool:
+        return self.alu.positive
 
     def ld(self, memory_address: Register, target_register: Register):
         # выбираем значение из регистра как адрес
@@ -319,7 +319,7 @@ class ControlUnit:
         elif Signal.PCJumpTypeJG in microcode:
             self.pc = (
                 self.parse_instruction_args(self.data_path.code_mem[self.pc])["imm"]
-                if self.data_path.get_negative_flag()
+                if self.data_path.get_positive_flag()
                 else self.pc + 1
             )
         else:

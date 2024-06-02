@@ -359,5 +359,5 @@ tests/test_machine.py ....                                                      
 | Бижанов Расул Сунгатович | hello user | 64  | 42          | 385    | 768   | asm | risc | harv | mc | tick | struct | stream | port | pstr | prob1 |
 | Бижанов Расул Сунгатович | cat        | 10  | 5           | 48     | 94    | asm | risc | harv | mc | tick | struct | stream | port | pstr | prob1 |
 | Бижанов Расул Сунгатович | hello world| 10  | 19          | 90     | 178   | asm | risc | harv | mc | tick | struct | stream | port | pstr | prob1 |
-| Бижанов Расул Сунгатович | prob1      | 49  | 19          | 115    | 228   | asm | risc | harv | mc | tick | struct | stream | port | pstr | prob1 |
+| Бижанов Расул Сунгатович | prob1      | 49  | 32          | 115    | 228   | asm | risc | harv | mc | tick | struct | stream | port | pstr | prob1 |
 ```
